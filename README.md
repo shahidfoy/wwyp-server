@@ -16,7 +16,7 @@ CREATE DATABASE wwyp;
 ## file set up:
 Add the below java file constants inside 
 `src/main/java/in/wwpy/server/constant/EmailConstant.java`
- in order to set up emails.  replace <your@gmail.com> & <your-password> 
+ in order to set up emails.  replace `<your@gmail.com>` & `<your-password>`
 with your Gmail username and password.
 
 ```java
