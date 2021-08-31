@@ -91,14 +91,14 @@ public class ContractController {
         return new ResponseEntity<>(contracts, OK);
     }
 
-    @GetMapping("/find/contractee/{contractee}")
-    public ResponseEntity<List<Contract>> findContractByContractee(@PathVariable("contractee") User contractee) {
+    @PostMapping("/find/contractee")
+    public ResponseEntity<List<Contract>> findContractByContractee(@RequestBody User contractee) {
         List<Contract> contracts = this.contractService.findContractByContractee(contractee);
         return new ResponseEntity<>(contracts, OK);
     }
 
-    @GetMapping("/find/contractor/{contractor}")
-    public ResponseEntity<List<Contract>> findContractByContractor(@PathVariable("contractor") User contractor) {
+    @PostMapping("/find/contractor")
+    public ResponseEntity<List<Contract>> findContractByContractor(@RequestBody User contractor) {
         List<Contract> contracts = this.contractService.findContractByContractor(contractor);
         return new ResponseEntity<>(contracts, OK);
     }
