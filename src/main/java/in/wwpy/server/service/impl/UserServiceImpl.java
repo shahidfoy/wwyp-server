@@ -11,7 +11,6 @@ import in.wwpy.server.repository.UserRepository;
 import in.wwpy.server.service.EmailService;
 import in.wwpy.server.service.LoginAttemptService;
 import in.wwpy.server.service.UserService;
-import javassist.bytecode.MethodParametersAttribute;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
