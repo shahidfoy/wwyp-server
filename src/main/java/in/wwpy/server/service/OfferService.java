@@ -1,6 +1,7 @@
 package in.wwpy.server.service;
 
 import in.wwpy.server.exception.type.OfferNotFoundException;
+import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
 
 import java.math.BigDecimal;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface OfferService {
 
-    Offer addNewOffer(Long contractId, Long userId, String username, String comment, BigDecimal amount, String amountType);
+    Offer addNewOffer(Contract contract, Long userId, String username, String comment, BigDecimal amount, String amountType);
 
     void deleteOffer(Long id);
 

@@ -33,7 +33,7 @@ public class ContractController {
     @PostMapping("/add")
     public ResponseEntity<Contract> addNewContract(@RequestBody Contract contract) {
         Contract newContract = this.contractService.addNewContract(
-                contract.getContractee(),
+                contract.getContracteeId(),
                 contract.getStatus(),
                 contract.getType(),
                 contract.getSubject(),
@@ -46,9 +46,9 @@ public class ContractController {
 
     @PostMapping("/assign/{id}")
     public ResponseEntity<Contract> assignContractor(@PathVariable("id") Long id,
-                                                     @RequestParam("contractor") User contractor,
+                                                     @RequestParam("contractorId") Long contractorId,
                                                      @RequestParam("offer") Offer offer) throws ContractNotFoundException {
-        Contract assignedContract = this.contractService.assignContractor(id, contractor, offer);
+        Contract assignedContract = this.contractService.assignContractor(id, contractorId, offer);
         return new ResponseEntity<>(assignedContract, OK);
     }
 
@@ -62,7 +62,7 @@ public class ContractController {
     public ResponseEntity<Contract> editContract(@RequestBody Contract contract) throws ContractNotFoundException {
         Contract updatedContract = this.contractService.editContract(
                 contract.getId(),
-                contract.getContractee(),
+                contract.getContracteeId(),
                 contract.getStatus(),
                 contract.getType(),
                 contract.getSubject(),
@@ -92,14 +92,14 @@ public class ContractController {
     }
 
     @PostMapping("/find/contractee")
-    public ResponseEntity<List<Contract>> findContractByContractee(@RequestBody User contractee) {
-        List<Contract> contracts = this.contractService.findContractByContractee(contractee);
+    public ResponseEntity<List<Contract>> findContractByContracteeId(@RequestBody Long contracteeId) {
+        List<Contract> contracts = this.contractService.findContractByContracteeId(contracteeId);
         return new ResponseEntity<>(contracts, OK);
     }
 
     @PostMapping("/find/contractor")
-    public ResponseEntity<List<Contract>> findContractByContractor(@RequestBody User contractor) {
-        List<Contract> contracts = this.contractService.findContractByContractor(contractor);
+    public ResponseEntity<List<Contract>> findContractByContractorId(@RequestBody Long contractorId) {
+        List<Contract> contracts = this.contractService.findContractByContractorId(contractorId);
         return new ResponseEntity<>(contracts, OK);
     }
 

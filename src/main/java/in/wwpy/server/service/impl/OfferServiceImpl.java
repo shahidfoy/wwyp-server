@@ -1,6 +1,7 @@
 package in.wwpy.server.service.impl;
 
 import in.wwpy.server.exception.type.OfferNotFoundException;
+import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
 import in.wwpy.server.repository.OfferRepository;
 import in.wwpy.server.service.OfferService;
@@ -29,9 +30,9 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public Offer addNewOffer(Long contractId, Long userId, String username, String comment, BigDecimal amount, String amountType) {
+    public Offer addNewOffer(Contract contract, Long userId, String username, String comment, BigDecimal amount, String amountType) {
         Offer offer = new Offer();
-        offer.setContractId(contractId);
+        offer.setContract(contract);
         offer.setUserId(userId);
         offer.setUsername(username);
         offer.setComment(comment);

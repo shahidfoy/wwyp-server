@@ -30,9 +30,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract addNewContract(User contractee, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) {
+    public Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) {
         Contract contract = new Contract();
-        contract.setContractee(contractee);
+        contract.setContracteeId(contracteeId);
         contract.setStatus(status);
         contract.setType(type);
         contract.setSubject(subject);
@@ -44,9 +44,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract assignContractor(Long contractId, User contractor, Offer acceptedOffer) throws ContractNotFoundException {
+    public Contract assignContractor(Long contractId, Long contractorId, Offer acceptedOffer) throws ContractNotFoundException {
         Contract contract = findContractById(contractId);
-        contract.setContractor(contractor);
+        contract.setContractorId(contractorId);
         contract.setAcceptedOffer(acceptedOffer);
         contractRepository.save(contract);
         return contract;
@@ -58,9 +58,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract editContract(Long id, User contractee, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException {
+    public Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException {
         Contract updatedContract = findContractById(id);
-        updatedContract.setContractee(contractee);
+        updatedContract.setContracteeId(contracteeId);
         updatedContract.setStatus(status);
         updatedContract.setType(type);
         updatedContract.setSubject(subject);
@@ -92,13 +92,13 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> findContractByContractee(User contractee) {
-        return contractRepository.findContractByContractee(contractee);
+    public List<Contract> findContractByContracteeId(Long contracteeId) {
+        return contractRepository.findContractByContracteeId(contracteeId);
     }
 
     @Override
-    public List<Contract> findContractByContractor(User contractor) {
-        return contractRepository.findContractByContractor(contractor);
+    public List<Contract> findContractByContractorId(Long contractorId) {
+        return contractRepository.findContractByContractorId(contractorId);
     }
 
     @Override

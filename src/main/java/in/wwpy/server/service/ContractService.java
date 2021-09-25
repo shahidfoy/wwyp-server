@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface ContractService {
 
-    Contract addNewContract(User contractee, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement);
+    Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement);
 
-    Contract assignContractor(Long contractId, User contractor, Offer acceptedOffer) throws ContractNotFoundException;
+    Contract assignContractor(Long contractId, Long contractorId, Offer acceptedOffer) throws ContractNotFoundException;
 
     void deleteContract(Long id);
 
-    Contract editContract(Long id, User contractee, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
+    Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
 
     Contract findContractById(Long id) throws ContractNotFoundException;
 
@@ -23,9 +23,9 @@ public interface ContractService {
 
     List<Contract> findContractByType(String type);
 
-    List<Contract> findContractByContractee(User contractee);
+    List<Contract> findContractByContracteeId(Long contracteeId);
 
-    List<Contract> findContractByContractor(User contractor);
+    List<Contract> findContractByContractorId(Long contractorId);
 
     List<Contract> getContracts();
 }

@@ -29,7 +29,7 @@ public class OfferController {
     @PostMapping("/add")
     public ResponseEntity<Offer> addNewOffer(@RequestBody Offer offer) {
         Offer newOffer = this.offerService.addNewOffer(
-                offer.getContractId(),
+                offer.getContract(),
                 offer.getUserId(),
                 offer.getUsername(),
                 offer.getComment(),

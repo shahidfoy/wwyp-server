@@ -11,6 +11,6 @@ import java.util.List;
 public interface ContractRepository extends JpaRepository<Contract, Long> {
     List<Contract> findContractByStatus(String status);
     List<Contract> findContractByType(String type);
-    List<Contract> findContractByContractee(User contractee);
-    List<Contract> findContractByContractor(User contractor);
+    List<Contract> findContractByContracteeId(Long contracteeId);
+    List<Contract> findContractByContractorId(Long contractorId);
 }

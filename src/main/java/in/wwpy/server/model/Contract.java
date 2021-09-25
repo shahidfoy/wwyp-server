@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -13,10 +15,8 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @OneToOne
-    private User contractee;
-    @OneToOne
-    private User contractor;
+    private Long contracteeId;
+    private Long contractorId;
     private String status;
     private String type;
     @Column(nullable = false)
@@ -24,11 +24,11 @@ public class Contract {
     @Column(nullable = false)
     private String body;
     private String[] contractImageUrls;
-    @OneToOne
-    private Offer acceptedOffer;
     private String legalAgreement;
-    //  private BigDecimal highestOfferAmount;
-    //  private String highestOfferType;
+    @OneToMany(mappedBy = "contract")
+    private List<Offer> offers = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    private Offer acceptedOffer;
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp
@@ -82,28 +82,20 @@ public class Contract {
         this.contractImageUrls = contractImageUrls;
     }
 
-    public User getContractee() {
-        return contractee;
+    public Long getContracteeId() {
+        return contracteeId;
     }
 
-    public void setContractee(User contractee) {
-        this.contractee = contractee;
+    public void setContracteeId(Long contracteeId) {
+        this.contracteeId = contracteeId;
     }
 
-    public User getContractor() {
-        return contractor;
+    public Long getContractorId() {
+        return contractorId;
     }
 
-    public void setContractor(User contractor) {
-        this.contractor = contractor;
-    }
-
-    public Offer getAcceptedOffer() {
-        return acceptedOffer;
-    }
-
-    public void setAcceptedOffer(Offer acceptedOffer) {
-        this.acceptedOffer = acceptedOffer;
+    public void setContractorId(Long contractorId) {
+        this.contractorId = contractorId;
     }
 
     public String getLegalAgreement() {
@@ -114,21 +106,23 @@ public class Contract {
         this.legalAgreement = legalAgreement;
     }
 
-//    public BigDecimal getHighestOfferAmount() {
-//        return highestOfferAmount;
-//    }
-//
-//    public void setHighestOfferAmount(BigDecimal highestOfferAmount) {
-//        this.highestOfferAmount = highestOfferAmount;
-//    }
-//
-//    public String getHighestOfferType() {
-//        return highestOfferType;
-//    }
-//
-//    public void setHighestOfferType(String highestOfferType) {
-//        this.highestOfferType = highestOfferType;
-//    }
+    public List<Offer> getOffers() { return offers; }
+
+    public void addOffer(Offer offer) {
+        this.offers.add(offer);
+    }
+
+    public void removeOffer(Offer offer) {
+        this.offers.remove(offer);
+    }
+
+    public Offer getAcceptedOffer() {
+        return acceptedOffer;
+    }
+
+    public void setAcceptedOffer(Offer acceptedOffer) {
+        this.acceptedOffer = acceptedOffer;
+    }
 
     public LocalDateTime getCreatedDate() {
         return createdDate;

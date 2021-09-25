@@ -13,8 +13,8 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(nullable = false, updatable = false)
-    private Long contractId;
+//    @Column(nullable = false, updatable = false)
+//    private Long contractId;
     @Column(nullable = false, updatable = false)
     private Long userId;
     @Column(nullable = false)
@@ -24,6 +24,8 @@ public class Offer {
     private BigDecimal amount;
     private String amountType;
     private boolean approved;
+    @ManyToOne
+    private Contract contract;
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp
@@ -37,13 +39,13 @@ public class Offer {
         this.id = id;
     }
 
-    public Long getContractId() {
-        return contractId;
-    }
-
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
-    }
+//    public Long getContractId() {
+//        return contractId;
+//    }
+//
+//    public void setContractId(Long contractId) {
+//        this.contractId = contractId;
+//    }
 
     public Long getUserId() {
         return userId;
@@ -91,6 +93,14 @@ public class Offer {
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 
     public LocalDateTime getCreatedDate() {
