@@ -1,5 +1,7 @@
 package in.wwpy.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -25,7 +27,8 @@ public class Contract {
     private String body;
     private String[] contractImageUrls;
     private String legalAgreement;
-    @OneToMany(mappedBy = "contract")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
     private List<Offer> offers = new ArrayList<>();
     @OneToOne(fetch = FetchType.LAZY)
     private Offer acceptedOffer;

@@ -1,5 +1,6 @@
 package in.wwpy.server.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -24,6 +25,7 @@ public class Offer {
     private BigDecimal amount;
     private String amountType;
     private boolean approved;
+    @JsonBackReference
     @ManyToOne
     private Contract contract;
     @CreationTimestamp

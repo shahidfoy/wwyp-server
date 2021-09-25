@@ -3,7 +3,7 @@ jwt:
 
 spring:
   datasource:
-    initialization-mode: always
+    initialization-mode: never
     url: jdbc:mysql://localhost:3306/wwyp #change this to your database url
     username: root #change this to your database username
     password: root #change this to your database password
