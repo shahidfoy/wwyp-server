@@ -23,10 +23,11 @@ public class User {
     private String[] authorities;
     private boolean isActive;
     private boolean isNotLocked;
+    private boolean isDarkModeEnabled;
 
     public User() {}
 
-    public User(Long id, String userId, String firstName, String lastName, String username, String password, String email, String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate, String role, String[] authorities, boolean isActive, boolean isNotLocked) {
+    public User(Long id, String userId, String firstName, String lastName, String username, String password, String email, String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate, String role, String[] authorities, boolean isActive, boolean isNotLocked, boolean isDarkModeEnabled) {
         this.id = id;
         this.userId = userId;
         this.firstName = firstName;
@@ -42,6 +43,7 @@ public class User {
         this.authorities = authorities;
         this.isActive = isActive;
         this.isNotLocked = isNotLocked;
+        this.isDarkModeEnabled = isDarkModeEnabled;
     }
 
     public Long getId() {
@@ -163,4 +165,8 @@ public class User {
     public void setNotLocked(boolean notLocked) {
         isNotLocked = notLocked;
     }
+
+    public boolean isDarkModeEnabled() { return isDarkModeEnabled; }
+
+    public void setDarkModeEnabled(boolean darkModeEnabled) { isDarkModeEnabled = darkModeEnabled; }
 }

@@ -81,6 +81,7 @@ public class UserController extends ExceptionHandling {
                                          @RequestParam("lastName") String lastName,
                                          @RequestParam("username") String username,
                                          @RequestParam("email") String email,
+                                         @RequestParam("isDarkModeEnabled") boolean isDarkModeEnabled,
                                          @RequestParam(value = "profileImage", required = false) MultipartFile profileImage)
             throws UserNotFoundException, EmailExistException, UsernameExistException {
         String token = authorizationHeader.substring(TOKEN_PREFIX.length());
@@ -88,7 +89,7 @@ public class UserController extends ExceptionHandling {
         System.out.println("auth username " + authEmail);
         System.out.println("auth username " + currentEmail);
         if (jwtTokenProvider.isTokenValid(authEmail, token) && currentEmail.equals(authEmail)) {
-            User editUser = userService.editUser(currentEmail, firstName, lastName, username, email, profileImage);
+            User editUser = userService.editUser(currentEmail, firstName, lastName, username, email, isDarkModeEnabled, profileImage);
             return new ResponseEntity<>(editUser, OK);
         } else {
             throw new AccessDeniedException(ACCESS_DENIED_MESSAGE);
@@ -142,12 +143,13 @@ public class UserController extends ExceptionHandling {
                                            @RequestParam("username") String username,
                                            @RequestParam("email") String email,
                                            @RequestParam("role") String role,
-                                           @RequestParam("isNonLocked") String isNonLocked,
-                                           @RequestParam("isActive") String isActive,
+                                           @RequestParam("isNonLocked") boolean isNonLocked,
+                                           @RequestParam("isActive") boolean isActive,
+                                           @RequestParam("isDarkModeEnabled") boolean isDarkModeEnabled,
                                            @RequestParam(value = "profileImage", required = false) MultipartFile profileImage)
             throws UserNotFoundException, UsernameExistException, EmailExistException, IOException {
         User updatedUser = userService.updateUser(currentUsername, firstName, lastName, username, email, role,
-                Boolean.parseBoolean(isNonLocked), Boolean.parseBoolean(isActive), profileImage);
+                isNonLocked, isActive, isDarkModeEnabled, profileImage);
         return new ResponseEntity<>(updatedUser, OK);
     }
 

@@ -106,12 +106,19 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User editUser(String currentEmail, String newFirstName, String newLastName, String newUsername, String newEmail, MultipartFile profileImage) throws UserNotFoundException, EmailExistException, UsernameExistException {
+    public User editUser(String currentEmail,
+                         String newFirstName,
+                         String newLastName,
+                         String newUsername,
+                         String newEmail,
+                         boolean isDarkModeEnabled,
+                         MultipartFile profileImage) throws UserNotFoundException, EmailExistException, UsernameExistException {
         User currentUser = validateNewUsernameAndEmail(currentEmail, newUsername, newEmail);
         currentUser.setFirstName(newFirstName);
         currentUser.setLastName(newLastName);
         currentUser.setUsername(newUsername);
         currentUser.setEmail(newEmail);
+        currentUser.setDarkModeEnabled(isDarkModeEnabled);
         // TODO:: USE CLOUDINARY TO STORE PROFILE IMAGES
         // saveProfileImage(currentUser, profileImage);
         userRepository.save(currentUser);
@@ -167,7 +174,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User updateUser(String currentUsername, String newFirstName, String newLastName, String newUsername, String newEmail, String role, boolean isNonLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException {
+    public User updateUser(String currentUsername,
+                           String newFirstName,
+                           String newLastName,
+                           String newUsername,
+                           String newEmail,
+                           String role,
+                           boolean isNonLocked,
+                           boolean isActive,
+                           boolean isDarkModeEnabled,
+                           MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException {
         User currentUser = validateNewUsernameAndEmail(currentUsername, newUsername, newEmail);
         currentUser.setFirstName(newFirstName);
         currentUser.setLastName(newLastName);
@@ -177,6 +193,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         currentUser.setNotLocked(isNonLocked);
         currentUser.setRole(getRoleEnumName(role).name());
         currentUser.setAuthorities(getRoleEnumName(role).getAuthorities());
+        currentUser.setDarkModeEnabled(isDarkModeEnabled);
         // TODO:: USE CLOUDINARY TO STORE PROFILE IMAGES
         // saveProfileImage(currentUser, profileImage);
         userRepository.save(currentUser);

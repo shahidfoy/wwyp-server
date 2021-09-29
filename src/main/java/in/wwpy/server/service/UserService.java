@@ -17,7 +17,7 @@ public interface UserService {
 
     void deleteUser(long id);
 
-    User editUser(String currentEmail, String newFirstName, String newLastName, String newUsername, String newEmail, MultipartFile profileImage) throws UserNotFoundException, EmailExistException, UsernameExistException;
+    User editUser(String currentEmail, String newFirstName, String newLastName, String newUsername, String newEmail, boolean isDarkModeEnabled, MultipartFile profileImage) throws UserNotFoundException, EmailExistException, UsernameExistException;
 
     User findUserByEmail(String email);
 
@@ -29,7 +29,7 @@ public interface UserService {
 
     void resetPassword(String email) throws EmailNotFoundException, MessagingException;
 
-    User updateUser(String currentUsername, String newFirstName, String newLastName, String newUsername, String newEmail, String role, boolean isNonLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException;
+    User updateUser(String currentUsername, String newFirstName, String newLastName, String newUsername, String newEmail, String role, boolean isNonLocked, boolean isActive, boolean isDarkModeEnabled, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException;
 
     User updateProfileImage(String username, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException;
 }
