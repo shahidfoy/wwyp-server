@@ -4,18 +4,15 @@ import in.wwpy.server.exception.type.ContractNotFoundException;
 import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.HttpResponse;
 import in.wwpy.server.model.Offer;
-import in.wwpy.server.model.User;
 import in.wwpy.server.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static in.wwpy.server.constant.ContractConstant.CONTRACT_DELETED_SUCCESSFULLY;
-import static in.wwpy.server.constant.OfferConstant.OFFER_DELETED_SUCCESSFULLY;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
