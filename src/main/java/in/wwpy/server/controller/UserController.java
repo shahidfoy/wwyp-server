@@ -96,8 +96,14 @@ public class UserController extends ExceptionHandling {
         }
     }
 
-    @GetMapping("/find/{username}")
-    public ResponseEntity<User> getUser(@PathVariable("username") String username) {
+    @GetMapping("/find/id/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
+        User user = userService.findUserById(id);
+        return new ResponseEntity<>(user, OK);
+    }
+
+    @GetMapping("/find/username/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
         return new ResponseEntity<>(user, OK);
     }

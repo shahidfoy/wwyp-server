@@ -30,6 +30,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static in.wwpy.server.constant.UserConstant.*;
 import static in.wwpy.server.enumeration.Role.ROLE_USER;
@@ -127,6 +128,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findUserByEmail(String email) { return userRepository.findUserByEmail(email); }
+
+    @Override
+    public User findUserById(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        return optionalUser.orElseGet(optionalUser::get);
+    }
 
     @Override
     public User findUserByUsername(String username) {
