@@ -25,6 +25,10 @@ public interface UserService {
 
     User findUserByUsername(String username);
 
+    String getUserProfileImageByUserId(Long id);
+
+    String getUserProfileImageByUsername(String username);
+
     List<User> getUsers();
 
     User register(String firstName, String lastName, String username, String email, String password) throws UsernameExistException, EmailExistException, UserNotFoundException, MessagingException;

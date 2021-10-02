@@ -167,25 +167,39 @@ public class UserController extends ExceptionHandling {
         return new ResponseEntity<>(user, OK);
     }
 
-    @GetMapping(path = "/image/{username}/{fileName}", produces = IMAGE_JPEG_VALUE)
-    public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {
-        // TODO:: USE CLOUDINARY TO STORY IMAGES
-        return null;
+    @GetMapping("/profile-image/id/{id}")
+    public ResponseEntity<String> getProfileImageByUserId(
+            @PathVariable("id") Long id
+    ) {
+        return new ResponseEntity<>(userService.getUserProfileImageByUserId(id), OK);
     }
 
-    @GetMapping(path = "/image/profile/{username}", produces = IMAGE_JPEG_VALUE)
-    public byte[] getTempProfileImage(@PathVariable("username") String username) throws IOException {
-        URL url = new URL(TEMP_PROFILE_IMAGE_BASE_URL + username + TEMP_PROFILE_IMAGE_PARAM_SET);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try (InputStream inputStream = url.openStream()) {
-            int bytesRead;
-            byte[] chunk = new byte[1024];
-            while((bytesRead = inputStream.read(chunk)) > 0) {
-                byteArrayOutputStream.write(chunk, 0, bytesRead);
-            }
-        }
-        return byteArrayOutputStream.toByteArray();
+    @GetMapping("/profile-image/username/{username}")
+    public ResponseEntity<String> getProfileImageByUsername(
+            @PathVariable("username") String username
+    ) {
+        return new ResponseEntity<>(userService.getUserProfileImageByUsername(username), OK);
     }
+
+//    @GetMapping(path = "/image/{username}/{fileName}", produces = IMAGE_JPEG_VALUE)
+//    public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {
+//        // TODO:: USE CLOUDINARY TO STORY IMAGES
+//        return null;
+//    }
+//
+//    @GetMapping(path = "/image/profile/{username}", produces = IMAGE_JPEG_VALUE)
+//    public byte[] getTempProfileImage(@PathVariable("username") String username) throws IOException {
+//        URL url = new URL(TEMP_PROFILE_IMAGE_BASE_URL + username + TEMP_PROFILE_IMAGE_PARAM_SET);
+//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//        try (InputStream inputStream = url.openStream()) {
+//            int bytesRead;
+//            byte[] chunk = new byte[1024];
+//            while((bytesRead = inputStream.read(chunk)) > 0) {
+//                byteArrayOutputStream.write(chunk, 0, bytesRead);
+//            }
+//        }
+//        return byteArrayOutputStream.toByteArray();
+//    }
 
     private void authenticate(String username, String password) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

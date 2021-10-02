@@ -141,6 +141,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public String getUserProfileImageByUserId(Long id) {
+        User user = findUserById(id);
+        return user.getProfileImageUrl();
+    }
+
+    @Override
+    public String getUserProfileImageByUsername(String username) {
+        User user = findUserByUsername(username);
+        return user.getProfileImageUrl();
+    }
+
+    @Override
     public List<User> getUsers() {
         return userRepository.findAll();
     }

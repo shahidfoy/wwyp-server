@@ -3,7 +3,7 @@ jwt:
 
 spring:
   datasource:
-    initialization-mode: never
+    initialization-mode: always
     url: jdbc:mysql://localhost:3306/wwyp #change this to your database url
     username: root #change this to your database username
     password: root #change this to your database password
@@ -11,7 +11,7 @@ spring:
     defer-datasource-initialization: true
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
