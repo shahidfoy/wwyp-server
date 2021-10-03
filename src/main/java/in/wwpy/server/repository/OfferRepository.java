@@ -11,5 +11,4 @@ import java.util.List;
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findOfferByContractId(Long contractId);
     List<Offer> findOfferByUserId(Long userId);
-    List<Offer> findOfferByUsername(String username);
 }

@@ -31,7 +31,6 @@ public class OfferController {
         Offer newOffer = this.offerService.addNewOffer(
                 offer.getContract(),
                 offer.getUserId(),
-                offer.getUsername(),
                 offer.getComment(),
                 offer.getAmount(),
                 offer.getAmountType());
@@ -48,7 +47,7 @@ public class OfferController {
     public ResponseEntity<Offer> editOffer(@RequestBody Offer offer) throws OfferNotFoundException {
         Offer updatedOffer = this.offerService.editOffer(
                 offer.getId(),
-                offer.getUsername(),
+                offer.getUserId(),
                 offer.getComment(),
                 offer.getAmount(),
                 offer.getAmountType()
@@ -86,14 +85,6 @@ public class OfferController {
             @PathVariable("id") Long id
     ) {
         List<Offer> offers = this.offerService.findOfferByUserId(id);
-        return new ResponseEntity<>(offers, OK);
-    }
-
-    @GetMapping("/find/username/{username}")
-    public ResponseEntity<List<Offer>> findOfferByUsername(
-            @PathVariable("username") String username
-    ) {
-        List<Offer> offers = this.offerService.findOfferByUsername(username);
         return new ResponseEntity<>(offers, OK);
     }
 

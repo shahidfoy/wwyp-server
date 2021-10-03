@@ -7,17 +7,20 @@ values (3, 'Test 2 body for a new contract', null, sysdate(), sysdate(), null, n
 insert into contract(id, body, contract_image_urls, created_date, last_updated_date, legal_agreement, status, subject, type, accepted_offer_id, contractee_id, contractor_id)
 values (4, 'Test 3 body for a new contract', null, sysdate(), sysdate(), null, null, 'test3', null, null, 1, null);
 
-insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, username, contract_id)
-values (1, "2.50", "USD", false, "I will give you $2.50", sysdate(), sysdate(), 2, 'another', 3);
+insert into contract(id, body, contract_image_urls, created_date, last_updated_date, legal_agreement, status, subject, type, accepted_offer_id, contractee_id, contractor_id)
+values (5, 'Test 4 body for a new contract', null, sysdate(), sysdate(), null, null, 'test2', null, null, 2, null);
 
-insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, username, contract_id)
-values (2, "3.50", "USD", false, "I will give you $3.50", sysdate(), sysdate(), 2, 'another', 3);
+insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, contract_id)
+values (1, "2.50", "USD", false, "I will give you $2.50", sysdate(), sysdate(), 2, 3);
 
-insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, username, contract_id)
-values (3, "4.50", "USD", false, "I will give you $4.50", sysdate(), sysdate(), 2, 'another', 3);
+insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, contract_id)
+values (2, "3.50", "USD", false, "I will give you $3.50", sysdate(), sysdate(), 2, 3);
 
-insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, username, contract_id)
-values (4, "5.50", "USD", false, "I will give you $5.50", sysdate(), sysdate(), 2, 'another', 4);
+insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, contract_id)
+values (3, "4.50", "USD", false, "I will give you $4.50", sysdate(), sysdate(), 2, 3);
 
-insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, username, contract_id)
-values (5, "6.50", "USD", false, "I will give you $6.50", sysdate(), sysdate(), 2, 'another', 4);
+insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, contract_id)
+values (4, "5.50", "USD", false, "I will give you $5.50", sysdate(), sysdate(), 2, 4);
+
+insert into offer(id, amount, amount_type, approved, comment, created_date, last_updated_date, user_id, contract_id)
+values (5, "6.50", "USD", false, "I will give you $6.50", sysdate(), sysdate(), 2, 4);

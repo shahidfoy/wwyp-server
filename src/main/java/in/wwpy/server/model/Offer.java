@@ -19,8 +19,6 @@ public class Offer {
     @Column(nullable = false, updatable = false)
     private Long userId;
     @Column(nullable = false)
-    private String username;
-    @Column(nullable = false)
     private String comment;
     private BigDecimal amount;
     private String amountType;
@@ -55,14 +53,6 @@ public class Offer {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getComment() {

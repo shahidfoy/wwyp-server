@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface OfferService {
 
-    Offer addNewOffer(Contract contract, Long userId, String username, String comment, BigDecimal amount, String amountType);
+    Offer addNewOffer(Contract contract, Long userId, String comment, BigDecimal amount, String amountType);
 
     void deleteOffer(Long id);
 
-    Offer editOffer(Long id, String username, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException;
+    Offer editOffer(Long id, Long userId, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException;
 
     Offer approveOffer(Long id, boolean approved) throws OfferNotFoundException;
 
@@ -22,8 +22,6 @@ public interface OfferService {
     List<Offer> findOfferByContractId(Long contractId);
 
     List<Offer> findOfferByUserId(Long userId);
-
-    List<Offer> findOfferByUsername(String username);
 
     List<Offer> getOffers();
 }

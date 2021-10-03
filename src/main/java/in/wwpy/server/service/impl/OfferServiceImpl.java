@@ -30,11 +30,10 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public Offer addNewOffer(Contract contract, Long userId, String username, String comment, BigDecimal amount, String amountType) {
+    public Offer addNewOffer(Contract contract, Long userId, String comment, BigDecimal amount, String amountType) {
         Offer offer = new Offer();
         offer.setContract(contract);
         offer.setUserId(userId);
-        offer.setUsername(username);
         offer.setComment(comment);
         offer.setAmount(amount);
         offer.setAmountType(amountType);
@@ -49,9 +48,9 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public Offer editOffer(Long id, String username, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException {
+    public Offer editOffer(Long id, Long userId, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException {
         Offer updatedOffer = findOfferById(id);
-        updatedOffer.setUsername(username);
+        updatedOffer.setUserId(userId);
         updatedOffer.setComment(comment);
         updatedOffer.setAmount(amount);
         updatedOffer.setAmountType(amountType);
@@ -85,11 +84,6 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<Offer> findOfferByUserId(Long userId) {
         return offerRepository.findOfferByUserId(userId);
-    }
-
-    @Override
-    public List<Offer> findOfferByUsername(String username) {
-        return offerRepository.findOfferByUsername(username);
     }
 
     @Override
