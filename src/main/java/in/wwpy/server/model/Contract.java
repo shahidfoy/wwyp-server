@@ -29,6 +29,7 @@ public class Contract {
     private String legalAgreement;
     @JsonManagedReference
     @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
+    @OrderBy("amount DESC")
     private List<Offer> offers = new ArrayList<>();
     @OneToOne(fetch = FetchType.LAZY)
     private Offer acceptedOffer;

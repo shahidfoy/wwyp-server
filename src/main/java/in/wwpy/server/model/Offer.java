@@ -14,8 +14,6 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-//    @Column(nullable = false, updatable = false)
-//    private Long contractId;
     @Column(nullable = false, updatable = false)
     private Long userId;
     @Column(nullable = false)
@@ -38,14 +36,6 @@ public class Offer {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public Long getContractId() {
-//        return contractId;
-//    }
-//
-//    public void setContractId(Long contractId) {
-//        this.contractId = contractId;
-//    }
 
     public Long getUserId() {
         return userId;
