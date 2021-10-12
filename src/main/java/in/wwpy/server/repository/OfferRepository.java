@@ -10,5 +10,6 @@ import java.util.List;
 @RepositoryRestResource(path = "offer-resource")
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findOfferByContractId(Long contractId);
+    List<Offer> findOfferByContractIdOrderByAmountDesc(Long contractId);
     List<Offer> findOfferByUserId(Long userId);
 }

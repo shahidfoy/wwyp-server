@@ -1,13 +1,10 @@
 package in.wwpy.server.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Contract {
@@ -25,10 +22,6 @@ public class Contract {
     private String body;
     private String[] contractImageUrls;
     private String legalAgreement;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
-    @OrderBy("amount DESC")
-    private List<Offer> offers = new ArrayList<>();
     @OneToOne(fetch = FetchType.LAZY)
     private Offer acceptedOffer;
     @CreationTimestamp
@@ -106,16 +99,6 @@ public class Contract {
 
     public void setLegalAgreement(String legalAgreement) {
         this.legalAgreement = legalAgreement;
-    }
-
-    public List<Offer> getOffers() { return offers; }
-
-    public void addOffer(Offer offer) {
-        this.offers.add(offer);
-    }
-
-    public void removeOffer(Offer offer) {
-        this.offers.remove(offer);
     }
 
     public Offer getAcceptedOffer() {
