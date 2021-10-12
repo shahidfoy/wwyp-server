@@ -103,6 +103,6 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public List<Contract> getContracts() {
-        return contractRepository.findAll();
+        return contractRepository.findAllByOrderByLastUpdatedDateDesc();
     }
 }

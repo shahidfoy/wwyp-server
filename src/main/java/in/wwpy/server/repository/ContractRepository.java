@@ -10,6 +10,7 @@ import java.util.List;
 
 @RepositoryRestResource(path = "contract-resource")
 public interface ContractRepository extends JpaRepository<Contract, Long> {
+    List<Contract> findAllByOrderByLastUpdatedDateDesc();
     List<Contract> findContractByStatus(String status);
     List<Contract> findContractByType(String type);
     List<Contract> findContractByContracteeId(Long contracteeId);
