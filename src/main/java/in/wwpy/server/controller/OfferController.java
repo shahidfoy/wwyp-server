@@ -80,6 +80,15 @@ public class OfferController {
         return new ResponseEntity<>(offers, OK);
     }
 
+    @GetMapping("/find/contract/{contractId}/user/{userId}")
+    public ResponseEntity<Offer> findOfferByContractIdAndByUserId(
+            @PathVariable("contractId") Long contractId,
+            @PathVariable("userId") Long userId
+    ) {
+        Offer offer = this.offerService.findOfferByContractIdAndUserId(contractId, userId);
+        return new ResponseEntity<>(offer, OK);
+    }
+
     @GetMapping("/find/user/{id}")
     public ResponseEntity<List<Offer>> findOfferByUserId(
             @PathVariable("id") Long id
