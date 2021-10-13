@@ -108,13 +108,5 @@ public class OfferServiceImpl implements OfferService {
             zeroOffer.setAmount(BigDecimal.ZERO);
             return zeroOffer;
         }
-//        if (highestOffer != null) {
-//            return highestOffer;
-//        } else {
-//            Offer zeroOffer = new Offer();
-//            zeroOffer.setAmountType("USD");
-//            zeroOffer.setAmount(BigDecimal.ZERO);
-//            return zeroOffer;
-//        }
     }
 }
