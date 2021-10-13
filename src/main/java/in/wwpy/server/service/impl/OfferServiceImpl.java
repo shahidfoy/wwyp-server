@@ -3,7 +3,6 @@ package in.wwpy.server.service.impl;
 import in.wwpy.server.exception.type.OfferNotFoundException;
 import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
-import in.wwpy.server.repository.ContractRepository;
 import in.wwpy.server.repository.OfferRepository;
 import in.wwpy.server.service.OfferService;
 import org.slf4j.Logger;
