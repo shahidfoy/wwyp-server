@@ -96,4 +96,25 @@ public class OfferServiceImpl implements OfferService {
     public List<Offer> getOffers() {
         return offerRepository.findAll();
     }
+
+    @Override
+    public Offer highestOfferByContractId(Long contractId) {
+        try {
+            Offer highestOffer = offerRepository.findOfferByContractIdOrderByAmountDesc(contractId).get(0);
+            return highestOffer;
+        } catch (Exception ex){
+            Offer zeroOffer = new Offer();
+            zeroOffer.setAmountType("USD");
+            zeroOffer.setAmount(BigDecimal.ZERO);
+            return zeroOffer;
+        }
+//        if (highestOffer != null) {
+//            return highestOffer;
+//        } else {
+//            Offer zeroOffer = new Offer();
+//            zeroOffer.setAmountType("USD");
+//            zeroOffer.setAmount(BigDecimal.ZERO);
+//            return zeroOffer;
+//        }
+    }
 }
