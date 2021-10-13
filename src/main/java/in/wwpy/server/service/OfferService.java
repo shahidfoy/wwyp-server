@@ -28,4 +28,6 @@ public interface OfferService {
     List<Offer> getOffers();
 
     Offer highestOfferByContractId(Long contractId);
+
+    Offer lowestOfferByContractId(Long contractId);
 }

@@ -111,6 +111,14 @@ public class OfferController {
         return new ResponseEntity<>(highestOffer, OK);
     }
 
+    @GetMapping("/contract/lowest-offer/{contractId}")
+    public ResponseEntity<Offer> lowestOfferByContractId(
+            @PathVariable("contractId") Long contractId
+    ) {
+        Offer lowestOffer = this.offerService.lowestOfferByContractId(contractId);
+        return new ResponseEntity<>(lowestOffer, OK);
+    }
+
 
     private ResponseEntity<HttpResponse> response(HttpStatus httpStatus, String message) {
         HttpResponse body = new HttpResponse(
