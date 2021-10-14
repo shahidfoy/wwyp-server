@@ -21,6 +21,8 @@ public interface OfferService {
 
     List<Offer> findOfferByContractId(Long contractId);
 
+    List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId);
+
     Offer findOfferByContractIdAndUserId(Long contractId, Long userId);
 
     List<Offer> findOfferByUserId(Long userId);

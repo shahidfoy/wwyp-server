@@ -82,6 +82,11 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId) {
+        return offerRepository.findOfferByContractIdOrderByAmountAsc(contractId);
+    }
+
+    @Override
     public Offer findOfferByContractIdAndUserId(Long contractId, Long userId) {
         return offerRepository.findOfferByContractIdAndUserId(contractId, userId);
     }
