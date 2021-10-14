@@ -88,7 +88,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public List<Offer> findOfferByUserId(Long userId) {
-        return offerRepository.findOfferByUserId(userId);
+        return offerRepository.findOfferByUserIdOrderByCreatedDateDesc(userId);
     }
 
     @Override
