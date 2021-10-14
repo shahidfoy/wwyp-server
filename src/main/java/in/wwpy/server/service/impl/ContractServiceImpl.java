@@ -3,7 +3,6 @@ package in.wwpy.server.service.impl;
 import in.wwpy.server.exception.type.ContractNotFoundException;
 import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
-import in.wwpy.server.model.User;
 import in.wwpy.server.repository.ContractRepository;
 import in.wwpy.server.service.ContractService;
 import org.slf4j.Logger;
@@ -30,13 +29,14 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) {
+    public Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) {
         Contract contract = new Contract();
         contract.setContracteeId(contracteeId);
         contract.setStatus(status);
         contract.setType(type);
         contract.setSubject(subject);
         contract.setBody(body);
+        contract.setSeekingLowestOffer(seekingLowestOffer);
         contract.setContractImageUrls(contractImageUrls);
         contract.setLegalAgreement(legalAgreement);
         contractRepository.save(contract);

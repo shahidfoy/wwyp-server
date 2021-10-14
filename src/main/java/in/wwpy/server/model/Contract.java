@@ -24,7 +24,7 @@ public class Contract {
     private String legalAgreement;
     @OneToOne(fetch = FetchType.LAZY)
     private Offer acceptedOffer;
-    private boolean seekingLowestOffer;
+    private boolean isSeekingLowestOffer;
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp
@@ -111,11 +111,11 @@ public class Contract {
     }
 
     public boolean isSeekingLowestOffer() {
-        return seekingLowestOffer;
+        return isSeekingLowestOffer;
     }
 
     public void setSeekingLowestOffer(boolean seekingLowestOffer) {
-        this.seekingLowestOffer = seekingLowestOffer;
+        isSeekingLowestOffer = seekingLowestOffer;
     }
 
     public LocalDateTime getCreatedDate() {

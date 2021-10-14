@@ -35,6 +35,7 @@ public class ContractController {
                 contract.getType(),
                 contract.getSubject(),
                 contract.getBody(),
+                contract.isSeekingLowestOffer(),
                 contract.getContractImageUrls(),
                 contract.getLegalAgreement()
         );
