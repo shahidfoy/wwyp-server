@@ -8,6 +8,8 @@ import in.wwpy.server.service.OfferService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,12 +24,10 @@ import static in.wwpy.server.constant.OfferConstant.THIS_OFFER_DOES_NOT_EXIST;
 public class OfferServiceImpl implements OfferService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private final OfferRepository offerRepository;
+    private final int DEFAULT_PAGE_SIZE = 20;
 
     @Autowired
-    public OfferServiceImpl(OfferRepository offerRepository) {
-        this.offerRepository = offerRepository;
-    }
+    private OfferRepository offerRepository;
 
     @Override
     public Offer addNewOffer(Contract contract, Long userId, String comment, BigDecimal amount, String amountType) {
@@ -41,6 +41,17 @@ public class OfferServiceImpl implements OfferService {
         offerRepository.save(offer);
         return offer;
     }
+
+    @Override
+    public Long countOfferByContractId(Long contractId) {
+        return offerRepository.countOfferByContractId(contractId);
+    }
+
+    @Override
+    public Long countOfferByUserId(Long userId) {
+        return offerRepository.countOfferByUserId(userId);
+    }
+
 
     @Override
     public void deleteOffer(Long id) {
@@ -77,13 +88,15 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public List<Offer> findOfferByContractId(Long contractId) {
-        return offerRepository.findOfferByContractIdOrderByAmountDesc(contractId);
+    public List<Offer> findOfferByContractId(Long contractId, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return offerRepository.findOfferByContractIdOrderByAmountDesc(contractId, pageable);
     }
 
     @Override
-    public List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId) {
-        return offerRepository.findOfferByContractIdOrderByAmountAsc(contractId);
+    public List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return offerRepository.findOfferByContractIdOrderByAmountAsc(contractId, pageable);
     }
 
     @Override
@@ -92,8 +105,9 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public List<Offer> findOfferByUserId(Long userId) {
-        return offerRepository.findOfferByUserIdOrderByLastUpdatedDateDesc(userId);
+    public List<Offer> findOfferByUserId(Long userId, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return offerRepository.findOfferByUserIdOrderByLastUpdatedDateDesc(userId, pageable);
     }
 
     @Override
@@ -104,7 +118,8 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public Offer highestOfferByContractId(Long contractId) {
         try {
-            return offerRepository.findOfferByContractIdOrderByAmountDesc(contractId).get(0);
+            Pageable pageable = PageRequest.of(0, DEFAULT_PAGE_SIZE);
+            return offerRepository.findOfferByContractIdOrderByAmountDesc(contractId, pageable).get(0);
         } catch (Exception ex){
             Offer zeroOffer = new Offer();
             zeroOffer.setAmountType("USD");
@@ -116,7 +131,8 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public Offer lowestOfferByContractId(Long contractId) {
         try {
-            return offerRepository.findOfferByContractIdOrderByAmountAsc(contractId).get(0);
+            Pageable pageable = PageRequest.of(0, DEFAULT_PAGE_SIZE);
+            return offerRepository.findOfferByContractIdOrderByAmountAsc(contractId, pageable).get(0);
         } catch (Exception ex){
             Offer zeroOffer = new Offer();
             zeroOffer.setAmountType("USD");

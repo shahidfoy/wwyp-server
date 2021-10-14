@@ -37,6 +37,18 @@ public class OfferController {
         return new ResponseEntity<>(newOffer, OK);
     }
 
+    @GetMapping("/count/contract/{id}")
+    public ResponseEntity<Long> countOfferByContractId(@PathVariable("id") Long id) {
+        Long count = this.offerService.countOfferByContractId(id);
+        return new ResponseEntity<>(count, OK);
+    }
+
+    @GetMapping("/count/user/{id}")
+    public ResponseEntity<Long> countOfferByUserId(@PathVariable("id") Long id) {
+        Long count = this.offerService.countOfferByUserId(id);
+        return new ResponseEntity<>(count, OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpResponse> deleteOffer(@PathVariable("id") Long id) {
         offerService.deleteOffer(id);
@@ -74,17 +86,19 @@ public class OfferController {
 
     @GetMapping("/find/contract/{id}")
     public ResponseEntity<List<Offer>> findOfferByContractId(
+            @RequestParam("page") int page,
             @PathVariable("id") Long id
     ) {
-        List<Offer> offers = this.offerService.findOfferByContractId(id);
+        List<Offer> offers = this.offerService.findOfferByContractId(id, page);
         return new ResponseEntity<>(offers, OK);
     }
 
     @GetMapping("/find/contract/{id}/lowest")
     public ResponseEntity<List<Offer>> findOfferByContractIdOrderByAmountAsc(
+            @RequestParam("page") int page,
             @PathVariable("id") Long id
     ) {
-        List<Offer> offers = this.offerService.findOfferByContractIdOrderByAmountAsc(id);
+        List<Offer> offers = this.offerService.findOfferByContractIdOrderByAmountAsc(id, page);
         return new ResponseEntity<>(offers, OK);
     }
 
@@ -99,9 +113,10 @@ public class OfferController {
 
     @GetMapping("/find/user/{id}")
     public ResponseEntity<List<Offer>> findOfferByUserId(
+            @RequestParam("page") int page,
             @PathVariable("id") Long id
     ) {
-        List<Offer> offers = this.offerService.findOfferByUserId(id);
+        List<Offer> offers = this.offerService.findOfferByUserId(id, page);
         return new ResponseEntity<>(offers, OK);
     }
 

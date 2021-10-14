@@ -11,6 +11,10 @@ public interface OfferService {
 
     Offer addNewOffer(Contract contract, Long userId, String comment, BigDecimal amount, String amountType);
 
+    Long countOfferByContractId(Long contractId);
+
+    Long countOfferByUserId(Long userId);
+
     void deleteOffer(Long id);
 
     Offer editOffer(Long id, Long userId, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException;
@@ -19,13 +23,13 @@ public interface OfferService {
 
     Offer findOfferById(Long id) throws OfferNotFoundException;
 
-    List<Offer> findOfferByContractId(Long contractId);
+    List<Offer> findOfferByContractId(Long contractId, int page);
 
-    List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId);
+    List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId, int page);
 
     Offer findOfferByContractIdAndUserId(Long contractId, Long userId);
 
-    List<Offer> findOfferByUserId(Long userId);
+    List<Offer> findOfferByUserId(Long userId, int page);
 
     List<Offer> getOffers();
 
