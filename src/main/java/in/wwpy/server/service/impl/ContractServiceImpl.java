@@ -94,7 +94,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public List<Contract> findContractByContracteeId(Long contracteeId) {
-        return contractRepository.findContractByContracteeId(contracteeId);
+        return contractRepository.findContractByContracteeIdOrderByLastUpdatedDateDesc(contracteeId);
     }
 
     @Override

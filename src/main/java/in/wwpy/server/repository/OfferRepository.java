@@ -13,5 +13,5 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findOfferByContractIdOrderByAmountAsc(Long contractId);
     List<Offer> findOfferByContractIdOrderByAmountDesc(Long contractId);
     List<Offer> findOfferByUserId(Long userId);
-    List<Offer> findOfferByUserIdOrderByCreatedDateDesc(Long userId);
+    List<Offer> findOfferByUserIdOrderByLastUpdatedDateDesc(Long userId);
 }
