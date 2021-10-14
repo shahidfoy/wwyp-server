@@ -50,6 +50,12 @@ public class ContractController {
         return new ResponseEntity<>(assignedContract, OK);
     }
 
+    @GetMapping("/count/contractee/{id}")
+    public ResponseEntity<Long> countContractByContracteeId(@PathVariable("id") Long id) {
+        Long count = this.contractService.countContractByContracteeId(id);
+        return new ResponseEntity<>(count, OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpResponse> deleteContract(@PathVariable("id") Long id) {
         contractService.deleteContract(id);
@@ -91,8 +97,10 @@ public class ContractController {
     }
 
     @PostMapping("/find/contractee")
-    public ResponseEntity<List<Contract>> findContractByContracteeId(@RequestBody Long contracteeId) {
-        List<Contract> contracts = this.contractService.findContractByContracteeId(contracteeId);
+    public ResponseEntity<List<Contract>> findContractByContracteeId(
+            @RequestParam("page") int page,
+            @RequestBody Long contracteeId) {
+        List<Contract> contracts = this.contractService.findContractByContracteeId(contracteeId, page);
         return new ResponseEntity<>(contracts, OK);
     }
 

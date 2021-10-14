@@ -8,6 +8,8 @@ import in.wwpy.server.service.ContractService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,12 +23,12 @@ import static in.wwpy.server.constant.ContractConstant.THIS_CONTRACT_DOES_NOT_EX
 public class ContractServiceImpl implements ContractService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private final ContractRepository contractRepository;
+    private final int DEFAULT_PAGE_SIZE = 20;
 
     @Autowired
-    public ContractServiceImpl(ContractRepository contractRepository) {
-        this.contractRepository = contractRepository;
-    }
+    private ContractRepository contractRepository;
+
+
 
     @Override
     public Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) {
@@ -50,6 +52,11 @@ public class ContractServiceImpl implements ContractService {
         contract.setAcceptedOffer(acceptedOffer);
         contractRepository.save(contract);
         return contract;
+    }
+
+    @Override
+    public Long countContractByContracteeId(Long contracteeId) {
+        return contractRepository.countContractByContracteeId(contracteeId);
     }
 
     @Override
@@ -93,8 +100,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> findContractByContracteeId(Long contracteeId) {
-        return contractRepository.findContractByContracteeIdOrderByLastUpdatedDateDesc(contracteeId);
+    public List<Contract> findContractByContracteeId(Long contracteeId, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return contractRepository.findContractByContracteeIdOrderByLastUpdatedDateDesc(contracteeId, pageable);
     }
 
     @Override

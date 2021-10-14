@@ -12,6 +12,8 @@ public interface ContractService {
 
     Contract assignContractor(Long contractId, Long contractorId, Offer acceptedOffer) throws ContractNotFoundException;
 
+    Long countContractByContracteeId(Long contracteeId);
+
     void deleteContract(Long id);
 
     Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
@@ -22,7 +24,7 @@ public interface ContractService {
 
     List<Contract> findContractByType(String type);
 
-    List<Contract> findContractByContracteeId(Long contracteeId);
+    List<Contract> findContractByContracteeId(Long contracteeId, int page);
 
     List<Contract> findContractByContractorId(Long contractorId);
 
