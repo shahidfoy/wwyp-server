@@ -58,13 +58,14 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException {
+    public Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException {
         Contract updatedContract = findContractById(id);
         updatedContract.setContracteeId(contracteeId);
         updatedContract.setStatus(status);
         updatedContract.setType(type);
         updatedContract.setSubject(subject);
         updatedContract.setBody(body);
+        updatedContract.setSeekingLowestOffer(seekingLowestOffer);
         updatedContract.setContractImageUrls(contractImageUrls);
         updatedContract.setLegalAgreement(legalAgreement);
         contractRepository.save(updatedContract);

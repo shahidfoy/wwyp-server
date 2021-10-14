@@ -14,7 +14,7 @@ public interface ContractService {
 
     void deleteContract(Long id);
 
-    Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
+    Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
 
     Contract findContractById(Long id) throws ContractNotFoundException;
 
