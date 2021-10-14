@@ -56,6 +56,18 @@ public class ContractController {
         return new ResponseEntity<>(count, OK);
     }
 
+    @GetMapping("/count/contractor/{id}")
+    public ResponseEntity<Long> countContractByContractorId(@PathVariable("id") Long id) {
+        Long count = this.contractService.countContractByContractorId(id);
+        return new ResponseEntity<>(count, OK);
+    }
+
+    @GetMapping("/count/type/{type}")
+    public ResponseEntity<Long> countContractByType(@PathVariable("type") String type) {
+        Long count = this.contractService.countContractByType(type);
+        return new ResponseEntity<>(count, OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpResponse> deleteContract(@PathVariable("id") Long id) {
         contractService.deleteContract(id);
@@ -91,8 +103,10 @@ public class ContractController {
     }
 
     @GetMapping("/find/type/{type}")
-    public ResponseEntity<List<Contract>> findContractByType(@PathVariable("type") String type) {
-        List<Contract> contracts = this.contractService.findContractByType(type);
+    public ResponseEntity<List<Contract>> findContractByType(
+            @RequestParam("page") int page,
+            @PathVariable("type") String type) {
+        List<Contract> contracts = this.contractService.findContractByType(type, page);
         return new ResponseEntity<>(contracts, OK);
     }
 
@@ -105,8 +119,10 @@ public class ContractController {
     }
 
     @PostMapping("/find/contractor")
-    public ResponseEntity<List<Contract>> findContractByContractorId(@RequestBody Long contractorId) {
-        List<Contract> contracts = this.contractService.findContractByContractorId(contractorId);
+    public ResponseEntity<List<Contract>> findContractByContractorId(
+            @RequestParam("page") int page,
+            @RequestBody Long contractorId) {
+        List<Contract> contracts = this.contractService.findContractByContractorId(contractorId, page);
         return new ResponseEntity<>(contracts, OK);
     }
 

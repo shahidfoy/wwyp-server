@@ -60,6 +60,16 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public Long countContractByContractorId(Long contractorId) {
+        return contractRepository.countContractByContractorId(contractorId);
+    }
+
+    @Override
+    public Long countContractByType(String type) {
+        return contractRepository.countContractByType(type);
+    }
+
+    @Override
     public void deleteContract(Long id) {
         contractRepository.deleteById(id);
     }
@@ -95,8 +105,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> findContractByType(String type) {
-        return contractRepository.findContractByType(type);
+    public List<Contract> findContractByType(String type, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return contractRepository.findContractByTypeOrderByLastUpdatedDateDesc(type, pageable);
     }
 
     @Override
@@ -106,8 +117,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> findContractByContractorId(Long contractorId) {
-        return contractRepository.findContractByContractorId(contractorId);
+    public List<Contract> findContractByContractorId(Long contractorId, int page) {
+        Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+        return contractRepository.findContractByContractorIdOrderByLastUpdatedDateDesc(contractorId, pageable);
     }
 
     @Override

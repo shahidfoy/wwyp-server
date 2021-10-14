@@ -14,6 +14,10 @@ public interface ContractService {
 
     Long countContractByContracteeId(Long contracteeId);
 
+    Long countContractByContractorId(Long contractorId);
+
+    Long countContractByType(String type);
+
     void deleteContract(Long id);
 
     Contract editContract(Long id, Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) throws ContractNotFoundException;
@@ -22,11 +26,11 @@ public interface ContractService {
 
     List<Contract> findContractByStatus(String status);
 
-    List<Contract> findContractByType(String type);
+    List<Contract> findContractByType(String type, int page);
 
     List<Contract> findContractByContracteeId(Long contracteeId, int page);
 
-    List<Contract> findContractByContractorId(Long contractorId);
+    List<Contract> findContractByContractorId(Long contractorId, int page);
 
     List<Contract> getContracts();
 }
