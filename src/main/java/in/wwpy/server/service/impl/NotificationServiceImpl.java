@@ -63,18 +63,15 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public List<Notification> markNotificationsAsRead(List<Long> notificationIds) {
-        List<Notification> markedAsRead = new ArrayList<>();
+    public void markNotificationsAsRead(List<Long> notificationIds) {
         notificationIds.forEach(id -> {
             if (notificationRepository.findById(id).isPresent()) {
                 Notification notification = notificationRepository.findById(id).get();
                 notification.setMarkedRead(true);
                 notificationRepository.save(notification);
-                markedAsRead.add(notification);
             } else {
                 LOGGER.error(THIS_NOTIFICATION_DOES_NOT_EXIST);
             }
         });
-        return markedAsRead;
     }
 }

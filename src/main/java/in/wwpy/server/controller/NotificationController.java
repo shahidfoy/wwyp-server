@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static in.wwpy.server.constant.NotificationConstant.NOTIFICATIONS_MARKED_READ_SUCCESSFULLY;
 import static in.wwpy.server.constant.NotificationConstant.NOTIFICATION_DELETED_SUCCESSFULLY;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
@@ -60,11 +61,11 @@ public class NotificationController {
     }
 
     @PostMapping("/mark/read")
-    public ResponseEntity<List<Notification>> markNotificationsAsRead(
+    public ResponseEntity<HttpResponse> markNotificationsAsRead(
         @RequestBody List<Long> notificationIds
     ) {
-        List<Notification> notifications = this.notificationService.markNotificationsAsRead(notificationIds);
-        return new ResponseEntity<>(notifications, OK);
+        this.notificationService.markNotificationsAsRead(notificationIds);
+        return response(NO_CONTENT, NOTIFICATIONS_MARKED_READ_SUCCESSFULLY);
     }
 
     private ResponseEntity<HttpResponse> response(HttpStatus httpStatus, String message) {
