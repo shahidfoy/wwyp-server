@@ -19,12 +19,9 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping(path = {"/offer"})
 public class OfferController {
 
+    @Autowired
     private OfferService offerService;
 
-    @Autowired
-    public OfferController(OfferService offerService) {
-        this.offerService = offerService;
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Offer> addNewOffer(@RequestBody Offer offer) {

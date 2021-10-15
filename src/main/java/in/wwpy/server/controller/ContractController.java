@@ -20,12 +20,9 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping(path = {"/contract"})
 public class ContractController {
 
+    @Autowired
     private ContractService contractService;
 
-    @Autowired
-    public ContractController(ContractService contractService) {
-        this.contractService = contractService;
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Contract> addNewContract(@RequestBody Contract contract) {
