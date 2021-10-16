@@ -56,6 +56,8 @@ values (19, 'videogames');
 insert into sub_category(id, name)
 values (20, 'plants');
 insert into sub_category(id, name)
+values (21, 'toys');
+insert into sub_category(id, name)
 values (22, 'clothes');
 -- maintenance
 insert into sub_category(id, name)
