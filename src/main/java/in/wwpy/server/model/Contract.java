@@ -16,6 +16,7 @@ public class Contract {
     private Long contractorId;
     private String status;
     private String type;
+    private String[] subType;
     @Column(nullable = false)
     private String subject;
     @Column(nullable = false)
