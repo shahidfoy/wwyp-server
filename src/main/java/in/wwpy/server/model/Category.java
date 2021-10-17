@@ -12,7 +12,7 @@ public class Category {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<SubCategory> subCategories;
 
     public Long getId() {

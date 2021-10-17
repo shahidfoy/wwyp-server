@@ -12,7 +12,7 @@ public class SubCategory {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @ManyToMany(mappedBy = "subCategories")
+    @ManyToMany(mappedBy = "subCategories", fetch = FetchType.EAGER)
     private Set<Category> categories;
 
     public Long getId() {
