@@ -21,6 +21,11 @@ public class SubCategoryController {
     @Autowired
     private SubCategoryService subCategoryService;
 
+    @GetMapping("/find/all")
+    public ResponseEntity<List<SubCategory>> getSubCategories() {
+        List<SubCategory> subCategories = this.subCategoryService.getSubCategories();
+        return new ResponseEntity<>(subCategories, OK);
+    }
 
     @GetMapping("/find/{id}")
     public ResponseEntity<SubCategory> findSubCategoryById(
