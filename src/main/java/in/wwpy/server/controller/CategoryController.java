@@ -35,7 +35,7 @@ public class CategoryController {
         return new ResponseEntity<>(category, OK);
     }
 
-    @GetMapping("/find/{name}")
+    @GetMapping("/find/name/{name}")
     public ResponseEntity<Category> findCategoryByName(
             @PathVariable("name") String name
     ) {

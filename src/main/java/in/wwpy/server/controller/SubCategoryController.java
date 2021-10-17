@@ -35,7 +35,7 @@ public class SubCategoryController {
         return new ResponseEntity<>(subCategory, OK);
     }
 
-    @GetMapping("/find/{name}")
+    @GetMapping("/find/name/{name}")
     public ResponseEntity<SubCategory> findSubCategoryByName(
             @PathVariable("name") String name
     ) {
