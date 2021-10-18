@@ -1,5 +1,7 @@
 package in.wwpy.server.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ public class Category {
     private Long id;
     @Column(nullable = false)
     private String name;
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<SubCategory> subCategories;
 
