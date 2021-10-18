@@ -59,6 +59,8 @@ insert into sub_category(id, name)
 values (21, 'toys');
 insert into sub_category(id, name)
 values (22, 'clothes');
+insert into sub_category(id, name)
+values (53, 'rv');
 -- maintenance
 insert into sub_category(id, name)
 values (23, 'lawn');
@@ -284,6 +286,12 @@ insert into category_sub_categories(categories_id, sub_categories_id)
 values (5, 51);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (5, 52);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (1, 53);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (2, 53);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (3, 53);
 
 
 --

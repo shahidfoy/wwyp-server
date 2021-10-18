@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
