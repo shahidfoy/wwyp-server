@@ -2,296 +2,138 @@
 -- SETTING UP CATEGORIES
 --
 insert into category(id, name)
-values (1, 'sale');
+values (1, 'art');
 insert into category(id, name)
-values (2, 'maintenance');
+values (2, 'automotive');
 insert into category(id, name)
-values (3, 'rental');
+values (3, 'trading cards');
 insert into category(id, name)
-values (4, 'construction');
+values (4, 'coins');
 insert into category(id, name)
-values (5, 'service');
+values (5, 'jewelry');
+insert into category(id, name)
+values (6, 'video games');
 
 --
 -- SETTING UP SUB CATEGORIES
--- items
 insert into sub_category(id, name)
-values (1, 'cars');
+values (1, 'other');
+-- art
 insert into sub_category(id, name)
-values (2, 'electronics');
+values (2, 'paintings');
 insert into sub_category(id, name)
-values (3, 'tools');
+values (3, 'drawings');
 insert into sub_category(id, name)
-values (4, 'boats');
+values (4, 'digital');
 insert into sub_category(id, name)
-values (5, 'books');
+values (5, 'sculpture');
 insert into sub_category(id, name)
-values (6, 'art');
+values (6, 'photography');
+-- automotive
 insert into sub_category(id, name)
-values (7, 'pets');
+values (7, 'cars');
 insert into sub_category(id, name)
-values (8, 'aquariums');
+values (8, 'trucks');
 insert into sub_category(id, name)
-values (9, 'food');
+values (9, 'motorcycles');
 insert into sub_category(id, name)
-values (10, 'free');
+values (10, 'boats');
+-- cards
 insert into sub_category(id, name)
-values (11, 'computers');
+values (11, 'pokemon');
 insert into sub_category(id, name)
-values (12, 'cell phones');
+values (12, 'magic the gathering');
 insert into sub_category(id, name)
-values (13, 'collectable');
+values (13, 'yugioh');
 insert into sub_category(id, name)
-values (14, 'bikes');
+values (14, 'spots');
+-- coins
 insert into sub_category(id, name)
-values (15, 'automotive');
+values (15, 'crypto');
 insert into sub_category(id, name)
-values (16, 'motorcycle');
+values (16, 'physical');
+-- jewelry
 insert into sub_category(id, name)
-values (17, 'furniture');
+values (17, 'earrings');
 insert into sub_category(id, name)
-values (18, 'sports');
+values (18, 'necklace');
 insert into sub_category(id, name)
-values (19, 'videogames');
+values (19, 'bracelet');
 insert into sub_category(id, name)
-values (20, 'plants');
+values (20, 'cuff links');
 insert into sub_category(id, name)
-values (21, 'toys');
+values (21, 'gems');
 insert into sub_category(id, name)
-values (22, 'clothes');
+values (22, 'stones');
+-- video games
 insert into sub_category(id, name)
-values (53, 'rv');
--- maintenance
-insert into sub_category(id, name)
-values (23, 'lawn');
-insert into sub_category(id, name)
-values (24, 'plumber');
-insert into sub_category(id, name)
-values (25, 'electrician');
-insert into sub_category(id, name)
-values (26, 'hvac');
-insert into sub_category(id, name)
-values (27, 'pool');
-insert into sub_category(id, name)
-values (28, 'ponds');
-insert into sub_category(id, name)
-values (29, 'ac');
-insert into sub_category(id, name)
-values (30, 'mechanic');
-insert into sub_category(id, name)
-values (31, 'repairs');
--- rental
-insert into sub_category(id, name)
-values (32, 'houses');
-insert into sub_category(id, name)
-values (33, 'rooms');
-insert into sub_category(id, name)
-values (34, 'hotels');
-insert into sub_category(id, name)
-values (35, 'apartments');
--- construction
-insert into sub_category(id, name)
-values (36, 'residential');
-insert into sub_category(id, name)
-values (37, 'industrial');
-insert into sub_category(id, name)
-values (38, 'commercial');
-insert into sub_category(id, name)
-values (39, 'infrastructure');
-insert into sub_category(id, name)
-values (40, 'civil');
-insert into sub_category(id, name)
-values (41, 'railways');
-insert into sub_category(id, name)
-values (42, 'roads');
-insert into sub_category(id, name)
-values (43, 'bridges');
--- service
-insert into sub_category(id, name)
-values (44, 'tutors');
-insert into sub_category(id, name)
-values (45, 'photography');
-insert into sub_category(id, name)
-values (46, 'catering');
-insert into sub_category(id, name)
-values (47, 'baby sitter');
-insert into sub_category(id, name)
-values (48, 'cleaning');
-insert into sub_category(id, name)
-values (49, 'snow plow');
-insert into sub_category(id, name)
-values (50, 'dog trainer');
-insert into sub_category(id, name)
-values (51, 'massage');
-insert into sub_category(id, name)
-values (52, 'pet sitter');
+values (23, 'factory sealed');
 
 
 --
 -- SETTING UP MANY TO MANY FOR CATEGORIES & SUB CATEGORIES
--- items
+-- art
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 1);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 1);
-insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 2);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 2);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 2);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 3);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 3);
-insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 4);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 4);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 4);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 5);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 5);
-insert into category_sub_categories(categories_id, sub_categories_id)
 values (1, 6);
+-- automotive
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 6);
+values (2, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 7);
+values (2, 7);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 7);
+values (2, 8);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 8);
+values (2, 9);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 8);
+values (2, 10);
+-- cards
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 9);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 9);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 10);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 10);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 11);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 11);
+values (3, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (3, 11);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 12);
+values (3, 12);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 12);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 13);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 13);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 14);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 14);
+values (3, 13);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (3, 14);
+-- coins
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 15);
+values (4, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 15);
+values (4, 15);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 15);
+values (4, 16);
+-- jewelry
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 16);
+values (5, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 16);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 17);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 17);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 18);
+values (5, 17);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (5, 18);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 19);
+values (5, 19);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 20);
+values (5, 20);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 21);
+values (5, 21);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 22);
--- maintenance
+values (5, 22);
+-- video games
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 23);
+values (6, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 24);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 25);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 26);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 27);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 28);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 29);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 30);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 31);
--- rental
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 32);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 33);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 34);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 35);
--- construction
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 36);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 37);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 38);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 39);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 40);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 41);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 42);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (4, 43);
--- service
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 44);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 45);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 46);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 47);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 48);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 49);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 50);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 51);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (5, 52);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (1, 53);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (2, 53);
-insert into category_sub_categories(categories_id, sub_categories_id)
-values (3, 53);
+values (6, 23);
 
 
 --
