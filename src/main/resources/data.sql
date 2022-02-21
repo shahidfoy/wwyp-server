@@ -46,7 +46,7 @@ values (12, 'magic the gathering');
 insert into sub_category(id, name)
 values (13, 'yugioh');
 insert into sub_category(id, name)
-values (14, 'spots');
+values (14, 'sports');
 -- coins
 insert into sub_category(id, name)
 values (15, 'crypto');
