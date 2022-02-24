@@ -13,6 +13,8 @@ insert into category(id, name)
 values (5, 'jewelry');
 insert into category(id, name)
 values (6, 'video games');
+insert into category(id, name)
+values (7, 'books');
 
 --
 -- SETTING UP SUB CATEGORIES
@@ -68,6 +70,13 @@ values (22, 'stones');
 -- video games
 insert into sub_category(id, name)
 values (23, 'factory sealed');
+-- books
+insert into sub_category(id, name)
+values (24, 'comic');
+insert into sub_category(id, name)
+values (25, 'paperback');
+insert into sub_category(id, name)
+values (26, 'hardcover');
 
 
 --
@@ -134,6 +143,15 @@ insert into category_sub_categories(categories_id, sub_categories_id)
 values (6, 1);
 insert into category_sub_categories(categories_id, sub_categories_id)
 values (6, 23);
+-- books
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (7, 1);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (7, 24);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (7, 25);
+insert into category_sub_categories(categories_id, sub_categories_id)
+values (7, 26);
 
 
 --
