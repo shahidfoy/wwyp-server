@@ -68,6 +68,8 @@ public class NotificationController {
         return response(NO_CONTENT, NOTIFICATIONS_MARKED_READ_SUCCESSFULLY);
     }
 
+    // TODO:: MAKE END POINT THAT MARKS ALL NOTIFICATIONS AS READ BY USER ID
+
     private ResponseEntity<HttpResponse> response(HttpStatus httpStatus, String message) {
         HttpResponse body = new HttpResponse(
                 httpStatus.value(), httpStatus, httpStatus.getReasonPhrase().toUpperCase(), message.toUpperCase());

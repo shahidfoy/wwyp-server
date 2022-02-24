@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +17,7 @@ public class Contract {
     private Long contractorId;
     private String status;
     private String type;
+    private String[] subTypes;
     @Column(nullable = false)
     private String subject;
     @Column(nullable = false)
@@ -52,6 +54,14 @@ public class Contract {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String[] getSubTypes() {
+        return subTypes;
+    }
+
+    public void setSubTypes(String[] subTypes) {
+        this.subTypes = subTypes;
     }
 
     public String getSubject() {

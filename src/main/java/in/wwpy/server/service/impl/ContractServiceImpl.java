@@ -29,7 +29,6 @@ public class ContractServiceImpl implements ContractService {
     private ContractRepository contractRepository;
 
 
-
     @Override
     public Contract addNewContract(Long contracteeId, String status, String type, String subject, String body, boolean seekingLowestOffer, String[] contractImageUrls, String legalAgreement) {
         Contract contract = new Contract();
