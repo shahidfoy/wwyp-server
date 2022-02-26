@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 import static in.wwpy.server.constant.NotificationConstant.THIS_NOTIFICATION_DOES_NOT_EXIST;
@@ -54,6 +53,16 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public void deleteNotification(Long id) {
         notificationRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteNotificationByContractId(Long contractId) {
+        notificationRepository.deleteNotificationByContractId(contractId);
+    }
+
+    @Override
+    public void deleteNotificationByOfferId(Long offerId) {
+        notificationRepository.deleteNotificationByOfferId(offerId);
     }
 
     @Override

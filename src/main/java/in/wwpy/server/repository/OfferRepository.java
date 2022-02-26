@@ -12,6 +12,8 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     Long countOfferByContractId(Long contractId);
     Long countOfferByUserId(Long userId);
 
+    void deleteOfferByContractId(Long contractId);
+
     Offer findOfferByContractIdAndUserId(Long contractId, Long userId);
 
     List<Offer> findOfferByContractId(Long contractId, Pageable pageable);

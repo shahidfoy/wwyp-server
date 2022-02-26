@@ -5,6 +5,8 @@ import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
 import in.wwpy.server.repository.ContractRepository;
 import in.wwpy.server.service.ContractService;
+import in.wwpy.server.service.NotificationService;
+import in.wwpy.server.service.OfferService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,12 @@ public class ContractServiceImpl implements ContractService {
 
     @Autowired
     private ContractRepository contractRepository;
+
+    @Autowired
+    private OfferService offerService;
+
+    @Autowired
+    private NotificationService notificationService;
 
 
     @Override
@@ -70,6 +78,8 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public void deleteContract(Long id) {
+        notificationService.deleteNotificationByContractId(id);
+        offerService.deleteOfferByContractId(id);
         contractRepository.deleteById(id);
     }
 
