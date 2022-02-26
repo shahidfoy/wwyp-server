@@ -17,6 +17,8 @@ public interface OfferService {
 
     void deleteOffer(Long id);
 
+    void deleteOfferByContractId(Long contractId);
+
     Offer editOffer(Long id, Long userId, String comment, BigDecimal amount, String amountType) throws OfferNotFoundException;
 
     Offer approveOffer(Long id, boolean approved) throws OfferNotFoundException;

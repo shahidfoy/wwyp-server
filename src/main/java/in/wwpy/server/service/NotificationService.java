@@ -16,6 +16,10 @@ public interface NotificationService {
 
     void deleteNotification(Long id);
 
+    void deleteNotificationByContractId(Long contractId);
+
+    void deleteNotificationByOfferId(Long offerId);
+
     List<Notification> findNotificationByUserId(Long userId, int page);
 
     void markNotificationsAsRead(List<Long> notificationIds);

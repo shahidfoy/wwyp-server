@@ -4,6 +4,7 @@ import in.wwpy.server.exception.type.OfferNotFoundException;
 import in.wwpy.server.model.Contract;
 import in.wwpy.server.model.Offer;
 import in.wwpy.server.repository.OfferRepository;
+import in.wwpy.server.service.NotificationService;
 import in.wwpy.server.service.OfferService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,10 @@ public class OfferServiceImpl implements OfferService {
 
     @Autowired
     private OfferRepository offerRepository;
+
+    @Autowired
+    private NotificationService notificationService;
+
 
     @Override
     public Offer addNewOffer(Contract contract, Long userId, String comment, BigDecimal amount, String amountType) {
@@ -55,7 +60,13 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void deleteOffer(Long id) {
+        notificationService.deleteNotificationByOfferId(id);
         offerRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteOfferByContractId(Long contractId) {
+        offerRepository.deleteOfferByContractId(contractId);
     }
 
     @Override
